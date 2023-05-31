@@ -1,0 +1,108 @@
+ {% extends 'base.html' %}
+ 
+{% load static %} 
+
+  {% block extracss %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="{% static 'css/table.css'%}">
+    
+  {% endblock extracss %}
+   
+ 
+{% block body %}
+<div class="container-fluid">
+	<div class="table-wrapper shadow p-3 mb-5 bg-body rounded">
+		<div class="table-title">
+			<div class="row ">
+				<div class="col-sm-12  text-center ">
+					<h2>Analytical Report <b>Result</b></h2>
+				</div>
+				
+			</div>
+			 
+		</div>
+			 
+
+		 {% if data %} 
+		<table class="table table-striped table-hover table-bordered" id='tableid' >
+			<thead >
+				<tr >
+					<th rowspan="2" class="verticalcenter">Date</th>
+					<th rowspan="2" class="verticalcenter">Keyword/Tags</th>
+					<th rowspan="2" class="verticalcenter">No. of tweets</th>
+					<th colspan="3">Sentiment</th>
+				</tr>
+				<tr>
+					<th>Positive</th>
+					<th>Neutral</th>
+					<th>Negative</th>
+				</tr>
+				
+			</thead>
+		 
+			<tbody>
+				{% for i in data %} 
+				<tr>
+					<td>{{i.data.date }} </td>
+					<td>{{i.data.search}}</td>
+					<td>{{i.data.no_tweets}}</td>
+					<td>{{i.data.sentiments.positive}}</td>
+					<td>{{i.data.sentiments.neutral}}</td>
+					<td>{{i.data.sentiments.negative}}</td> 
+				</tr>
+				
+				 
+				 {% endfor %} 
+			</tbody>
+			
+		</table>
+		 {% else %} 
+
+		<p class="fs-4 text-danger text-center">NO Analysis records Available </p>
+		 {% endif %} 
+
+		 
+
+         {% comment %} pagination work {% endcomment %}
+		 <nav aria-label="Page navigation example">
+			<ul class="pagination justify-content-end">
+				{%if data.has_previous %}
+			  <li class="page-item" >
+				<a data-remote="true" class="page-link"  href="{% url 'homepage' %}?page={{data.previous_page_number}}"  aria-label="Previous">
+				  <span aria-hidden="true">&laquo;</span>
+				</a>
+			  </li>
+			  {% endif %}
+ 
+			 <li class="page-item"><a class="page-link" href="#">{{data.number}}</a></li>
+			 
+			  {%if data.has_next %}
+			  <li class="page-item"  >
+				<a data-remote="true" class="page-link"  href="{% url 'homepage' %}?page={{data.next_page_number}}"  aria-label="Next">
+				  <span aria-hidden="true">&raquo;</span>
+				</a>
+			  </li>
+			  {% endif %}
+			</ul>
+		  </nav>
+		
+		 
+		</div>
+</div>
+ 
+ 
+<script>
+
+</script>
+
+
+{% endblock body %}
+
+
+
+
+
+

@@ -1,0 +1,53 @@
+# Sentiment Analysis :
+
+This script can tell you the sentiments of people regarding to any events happening in the world by analyzing tweets related to that event. It will search for tweets about any topic and analyze each tweet to see how positive or negative it's emotion is. You might want to check out this complete text and video based detailed.
+
+# Getting Started :
+
+First of all login from your Twitter account and goto Twitter Apps. Create a new app (How to create twitter app) and goto Keys and access tokens and copy Consumer Key, Consumer Secret, Access Token and Access Token Secret. We will need them later.
+
+
+# Prerequisites :
+
+Be sure you have the following installed on your development machine:
+
+ Python >= 3.7
+ pip
+ Django>=3.2
+
+# Installation :
+
+>> download python 3.7 or above
+>> sudo apt update
+>> sudo apt install python3-pip
+>> pip --version
+>> pip install Django
+>> pip install tweepy
+>> pip install textblob
+>> pip install matplotlib
+
+// project start command : 
+>> python3 manage.py runserver
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
